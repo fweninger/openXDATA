@@ -1,0 +1,14 @@
+cl_spec: IEMOCAP_cl.spec
+eval_spec: IEMOCAP_eval.spec
+standardize_test_features_on_train: False
+standardize_features_per_datafile: False
+standardize_features_global: True
+num_cl_iters: 3 #10
+cl_inst_per_iter: 1000
+hidden_sizes: [1024, 512, 256]
+num_shared_hidden_layers: 1
+dropout_rate: 0.3
+num_dropout_passes: 200
+l2_regularization: 0.01
+cl_retrain_from_scratch: True
+final_dataset_name: IEMOCAP_cross_labeled

@@ -336,7 +336,7 @@ class MultiTargetDataset:
       else:
         ptask = predictions[task_index]
 
-      unlabeled_instances = filter(lambda i: self.labels[task_index][i] is None, range(num_instances))
+      unlabeled_instances = list(filter(lambda i: self.labels[task_index][i] is None, range(num_instances)))
       print("Number of unlabeled instances for", self.target_names[task_index], "=", len(unlabeled_instances))
       #print("Unlabeled instances for", self.target_names[task_index], "=", unlabeled_instances)
       # most certain instances out of the unlabeled ones

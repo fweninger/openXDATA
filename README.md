@@ -77,11 +77,10 @@ An example specification can be found in `example/cl.spec`:
     test2.arff,3
     test_unlab.arff,0
 
-In this example, the file `test1.arff` contains two labels (`classification_task1` and `regression_task1`, cf. above), the file `test2.arff` contains three labels and the file `test_unlab.arff` is completely unlabeled (it only contains features).
+In this example, the file `test1.arff` contains two target attributes (`classification_task1` and `regression_task1`, cf. above), the file `test2.arff` contains three target attributes and the file `test_unlab.arff` is completely unlabeled (it only contains features and zero target attributes).
 The features (number of features, names and types) need to match in all the ARFF files, otherwise an error is thrown.
 Optionally, one can also provide an evaluation specification. In this case, openXDATA will perform a test set evaluation after each iteration of the CDLC algorithm.
 
-Features standardized ...
 
 ### Options
 
@@ -126,7 +125,7 @@ num_dropout_passes | Number of dropout passes for predicting labels | Integer | 
 num_cl_iters | Number of cross-labeling iterations | Integer | 2
 cl_inst_per_iter | Number of instances to label per iteration | Integer | 200
 cl_retrain_from_scratch | Whether to retrain a network from random initialization in each CDLC iteration | Boolean | False
-cl_retrain_num_epochs | Number of epochs to retrain the network in each CDLC iteration | Integer | 1
+cl_retrain_num_epochs | Number of epochs to retrain the network in each CDLC iteration (if cl_retrain_from_scratch is NOT set) | Integer | 1
 cl_randomize_selection | Whether to label a random selection of instances (True) or use confidences for selecting instances in each iteration (False) | Boolean | False
 final_dataset_name | The name of the dataset after cross-labeling (ARFF file and relation name) | String | `cross_labeled_dataset`
 standardize_predictions | Whether to standardize (to zero mean and unit variance) the model predictions in each CDLC iteration | Boolean | False
