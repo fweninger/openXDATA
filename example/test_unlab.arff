@@ -1,0 +1,12 @@
+@relation unlabeled_arff
+
+@attribute inst_name string
+@attribute feature1 numeric
+@attribute feature2 numeric
+@attribute feature3 numeric
+
+@data
+'uinst1',0.1,0.2,0.3
+'uinst2',0.2,0.3,0.4
+'uinst3',0.3,0.4,0.5
+

@@ -1,0 +1,14 @@
+@relation database2_arff
+
+@attribute feature1 numeric
+@attribute feature2 numeric
+@attribute feature3 numeric
+@attribute regression_task2 numeric
+@attribute classification_task1 {yes, no}
+@attribute classification_task2 {AA, BB, CC}
+
+@data
+0.0,1.0,2.0,1.5,yes,BB
+1.0,0.0,2.2,1.0,no,AA
+0.0,1.0,2.5,1.2,no,CC
+-1.0,-2.0,1.0,?,yes,AA

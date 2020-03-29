@@ -1,0 +1,36 @@
+DEFAULT_OPTS = {
+  'cl_spec': None,
+  'eval_spec': None,
+  'display_config': True,
+  'display_tasks': True,
+  'random_seed': 42,
+  'standardize_features_per_datafile': True,
+  'standardize_features_global': False,
+  'standardize_test_features_on_train': True,
+  'standardize_labels': True,
+# training options
+  'batch_size': 32,
+  'num_epochs': 10,
+  'learning_rate': 0.01,
+  'learning_rate_decay': 0.02,
+  'dropout_rate': 0.1,
+  'l2_regularization': 0.0001,
+  'use_dropout_for_eval': True,
+# options for MTL model
+  'hidden_sizes': [1024] * 3,
+  'num_shared_hidden_layers': 2,
+  'retrain_per_task': False,
+  'retrain_freeze_shared': True,
+  'retrain_learning_rate_decay': 0.0,
+  'retrain_num_epochs': 10,
+# cross-labeling options
+  'num_dropout_passes': 10,
+  'num_cl_iters': 2,
+  'cl_inst_per_iter': 200,
+  'cl_retrain_from_scratch': False,
+  'cl_retrain_num_epochs': 1,
+  'cl_randomize_selection': False,
+  'initial_dataset_name': None,
+  'final_dataset_name': 'cross_labeled_dataset',
+  'standardize_predictions': False
+}

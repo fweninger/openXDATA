@@ -1,0 +1,15 @@
+@relation database1_arff
+
+@attribute instance_name string
+@attribute feature1 numeric
+@attribute feature2 numeric
+@attribute feature3 numeric
+@attribute classification_task1 { yes, no }
+@attribute regression_task1 numeric
+
+@data
+'inst1',2.0,3.0,4.0,yes,1.0
+'inst2',3.0,2.0,1.0,no,2.0
+'inst3',4.0,1.0,-1.1,yes,1.5
+'inst4',1.0,1.0,0.0,no,2.5
+'inst5',0.0,0.0,1.0,?,1.1

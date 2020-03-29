@@ -1,0 +1,5 @@
+cl_spec: cl.spec
+eval_spec: eval.spec
+num_cl_iters: 1
+hidden_sizes: [1024, 512, 256]
+cl_retrain_from_scratch: True
