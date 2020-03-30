@@ -1,1 +1,1 @@
-python ../main.py IEMOCAP.yaml 2>&1 | tee IEMOCAP.log
+python ../main.py IEMOCAP.yaml

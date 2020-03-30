@@ -337,11 +337,9 @@ class MultiTargetDataset:
         ptask = predictions[task_index]
 
       unlabeled_instances = list(filter(lambda i: self.labels[task_index][i] is None, range(num_instances)))
-      print("Number of unlabeled instances for", self.target_names[task_index], "=", len(unlabeled_instances))
-      #print("Unlabeled instances for", self.target_names[task_index], "=", unlabeled_instances)
       # most certain instances out of the unlabeled ones
       num_selected_instances = min(num_instances_to_label, len(unlabeled_instances))
-      print("Number of instances selected:", num_selected_instances)
+      print("Added labels for", num_selected_instances, "/", len(unlabeled_instances), "unlabeled instances for task", self.target_names[task_index])
       selected_instances = sorted(unlabeled_instances, \
         key=lambda i: uncertainty[task_index][i])[:num_selected_instances]
       predicted_labels = ptask[selected_instances]

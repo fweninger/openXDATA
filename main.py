@@ -80,13 +80,16 @@ if opts['display_tasks']:
 mtl_model = MultiTargetModel(cl_dataset.get_num_features(), tasks, opts)
 
 # train the MTL model w/ the cross-labeling dataset features and the dataset label+flag matrices
+print("*** Training a model on the initial training set ...")
 mtl_model.train(cl_dataset, opts)
 
 for iteration in range(opts['num_cl_iters']):
   # evaluate on the evaluation dataset (compute performance per task excl. missing labels)
   if eval_dataset is not None:
+    print("*** Evaluating the current model ...")
     mtl_model.predict_and_evaluate(eval_dataset, opts)
   # predict the cross-labeling dataset
+  print("*** Performing predictions for unlabeled training data ...")
   predictions, uncertainty = mtl_model.predict_with_dropout(cl_dataset, opts, scores=False, random=opts['cl_randomize_selection'])
   # update the labels in the cross-labeling dataset
   num_unlabeled = cl_dataset.update_labels_with_predictions(predictions, uncertainty, opts['cl_inst_per_iter'], opts['standardize_predictions'])
@@ -95,14 +98,16 @@ for iteration in range(opts['num_cl_iters']):
     mtl_model.create_model(opts)
   mtl_model.train(cl_dataset, opts)
   if num_unlabeled == 0:
-    print("--- No unlabeled instances remain, terminating the cross-labeling process.")
+    print("*** No unlabeled instances remain, terminating the cross-labeling process.")
     break
 
 # final evaluation
 if eval_dataset is not None:
+  print("*** Evaluating the final model ...")
   mtl_model.predict_and_evaluate(eval_dataset, opts)
   
 # write the cross-labeled dataset
 if opts['standardize_labels']:
   cl_dataset.unstandardize_labels()
+print("*** Writing the cross-labeled dataset ...")
 cl_dataset.write_arff(opts['final_dataset_name'] + '.arff', relation=opts['final_dataset_name'])

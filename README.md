@@ -46,7 +46,8 @@ In the `example` directory, there is an example configuration file along with da
 
 ### Data specification
 
-openXDATA requires feature files to be saved in the ARFF format. The ARFF format originates from the Weka open-source data mining tool (https://waikato.github.io/weka-wiki/formats_and_processing/arff/). In short, ARFF files are essentially CSV files with a header section containing the attribute names and types.
+openXDATA requires feature files to be saved in the ARFF format. The ARFF format originates from the Weka open-source data mining tool (https://waikato.github.io/weka-wiki/formats_and_processing/arff/). In short, ARFF files are essentially CSV files with a header section containing the attribute names and types. 
+Following the ARFF format, openXDATA codes missing labels as `?`.
 
 An example can be found in `example/test1.arff`:
 

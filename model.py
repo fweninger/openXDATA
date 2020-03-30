@@ -130,7 +130,8 @@ class MultiTargetModel:
       dataset.features[labeled_indices,:],
       [lf[labeled_indices,:] for lf in labels_and_flags], 
       epochs=opts['num_epochs'] if self.iteration == 0 else opts['cl_retrain_num_epochs'], 
-      batch_size=opts['batch_size']
+      batch_size=opts['batch_size'],
+      verbose=False
     )
     self.iteration += 1
     
@@ -173,10 +174,14 @@ class MultiTargetModel:
           all_pred.append(np.zeros((n_passes, num_inst, num_outp)))
         all_pred[task_index][p, ...] = pred[task_index]
       if verbose:
-        sys.stdout.write(".")
-        sys.stdout.flush()
+        if (p+1) % 10 == 0:
+          print(p+1, "/", n_passes, "forward passes done")
+        #sys.stdout.write(".")
+        #sys.stdout.flush()
     if verbose:
-      sys.stdout.write("\n")
+      if n_passes % 10 != 0:
+        print(n_passes, "/", n_passes, "forward passes done")
+      #sys.stdout.write("\n")
     pred = [None] * num_tasks
     uncertainty = [None] * num_tasks
     for task_index in range(num_tasks):
