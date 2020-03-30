@@ -40,6 +40,9 @@ In the `example` directory, there is an example configuration file along with da
 
     cd example
     python ../main.py config.yaml
+    
+The file `config.yaml` points to input data files in ARFF format (cf. below), which contain various target attributes and missing labels.
+The example will generate a file named `cross_labeled.arff` that has all the target attributes and no missing labels.
 
 
 ## Experiment configuration
@@ -142,4 +145,4 @@ The real-world example can be run by
     python ../main.py IEMOCAP.yaml
 
 After completion, the file `IEMOCAP_cross_labeled.arff` contains the cross-labeling set with completed labels.
-Moreover, the UAR / CC performance is printed after each CDLC iteration.
+Moreover, the UAR (unweighted average recall) and CC (correlation coefficient) on the test set is printed after each CDLC iteration.
